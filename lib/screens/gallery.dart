@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class GalleryView extends StatelessWidget {
   const GalleryView({super.key});
-  static const int _count = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -10,26 +9,6 @@ class GalleryView extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
       child: buildGallery(context),
     );
-  }
-
-  // calculateHeight calculates the height of image based on available width
-  // to preserve the aspect ratio of the image.
-  int calculateHeight(int inputWidth) {
-    const int originalWidth = 1920;
-    const int originalHeight = 1080;
-
-    int calculatedHeight = ((inputWidth / originalWidth) * originalHeight).round();
-    return calculatedHeight;
-  }
-
-  // get min width of image based on available width for the widget
-  int getMinWidth(int availableWidth) {
-    const int minWidth = 200;
-    int calculatedWidth = (availableWidth / _count).round();
-    if (calculatedWidth < minWidth) {
-      calculatedWidth = minWidth;
-    }
-    return calculatedWidth;
   }
 
   Widget buildGallery(BuildContext ctx) {
@@ -44,7 +23,7 @@ class GalleryView extends StatelessWidget {
 
   Widget getChip(String value) {
     return Container(
-      padding: EdgeInsets.only(left: 5, right: 5),
+      padding: const EdgeInsets.only(left: 5, right: 5),
       child: SizedBox(
         height: 30,
         child: Chip(
@@ -64,7 +43,7 @@ class GalleryView extends StatelessWidget {
             fit: BoxFit.contain,
             alignment: Alignment.center,
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           ListTile(
               title: Text(
                 value,
@@ -75,49 +54,5 @@ class GalleryView extends StatelessWidget {
         ],
       ),
     );
-
-    // return Card(
-    //   child: Column(
-    //     mainAxisAlignment: MainAxisAlignment.start,
-    //     children: [
-    //       const Image(
-    //         image: AssetImage('images/pd.png'),
-    //         fit: BoxFit.contain,
-    //         alignment: Alignment.center,
-    //       ),
-    //       Spacer(),
-    //       Text(
-    //         value,
-    //         textAlign: TextAlign.center,
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
-
-  // Widget buidImageCard(int index, String value, int maxheight) {
-  //   // var imageHeight = (maxheight < 200) ? 200 : maxheight;
-
-  //   return Column(
-  //     mainAxisSize: MainAxisSize.min,
-  //     children: [
-  //       Card(
-  //         margin: const EdgeInsets.fromLTRB(5, 10, 0, 0),
-  //         shape: RoundedRectangleBorder(
-  //           borderRadius: BorderRadius.circular(8),
-  //         ),
-  //         child: GridTile(
-  //             child: Image.asset(
-  //           'images/pd.png',
-  //           fit: BoxFit.contain,
-  //           alignment: Alignment.center,
-  //         )),
-  //       ),
-  //       Text(
-  //         value,
-  //         textAlign: TextAlign.center,
-  //       ),
-  //     ],
-  //   );
-  // }
 }

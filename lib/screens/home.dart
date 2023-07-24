@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:httpxfrontend/screens/gallery.dart';
+import 'package:httpxfrontend/screens/tabular.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -36,56 +37,8 @@ class HomeScreen extends StatelessWidget {
         ),
         const VerticalDivider(thickness: 1, width: 1),
         const Expanded(
-          child: GalleryView(),
+          child: TabularView(),
         ),
-      ]),
-    );
-  }
-}
-
-class HomeScreenAlt extends StatelessWidget {
-  const HomeScreenAlt({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ImageIcon(
-              AssetImage('images/httpx.png'),
-              size: 60,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 20),
-              child: Text("is fast and multipurpose toolkit"),
-            )
-          ],
-        ),
-        centerTitle: false,
-        elevation: 0,
-      ),
-      body: Column(children: [
-        AppBar(
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.search),
-              tooltip: 'Search',
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: const Icon(Icons.settings),
-              tooltip: 'Settings',
-              onPressed: () {},
-            ),
-          ],
-          titleSpacing: 0,
-        ),
-        const Divider(thickness: 1, height: 1),
-        const Expanded(child: Center(child: Text('Hello, world!'))),
       ]),
     );
   }
