@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 class Result {
   DateTime? timestamp;
   String? cdnName;
@@ -29,7 +27,7 @@ class Result {
   bool? http2;
   bool? pipeline;
   String? headlessBody;
-  ByteData? screenshotBytes;
+  String? screenshotBytes;
   Map<String, dynamic>? responseHeader;
   List<String>? technologies;
   // List<ByteData> asn;
