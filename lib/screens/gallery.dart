@@ -62,36 +62,71 @@ class _GalleryViewState extends State<GalleryView> {
         },
         // itemBuilder: (context, index) => bui,
         gridDelegate:
-            const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 600, mainAxisSpacing: 8, crossAxisSpacing: 8, childAspectRatio: 1.25));
+            const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 600, mainAxisSpacing: 8, crossAxisSpacing: 8, childAspectRatio: 1.2));
   }
 
   Widget getChip(String value) {
     return Container(
       padding: const EdgeInsets.only(left: 5, right: 5),
       child: SizedBox(
-        height: 30,
-        child: Chip(
-          label: Text(value),
-        ),
-      ),
+          height: 25,
+          child: Chip(
+            label: Text(value),
+          )),
     );
   }
 
   Widget buildGalleryCard(BuildContext context, int index, Result result) {
-    return SingleChildScrollView(
-      // physics: const NeverScrollableScrollPhysics(),
-      child: GridTile(
-        // footer: Text(result.input ?? "", textAlign: TextAlign.center),
-        child: images[index],
-        // footer: ListTile(
-        //     title: Text(
-        //       result.input ?? "",
-        //       textAlign: TextAlign.center,
-        //     ),
-        //     dense: true,
-        //     subtitle: Row(mainAxisSize: MainAxisSize.max, children: getChips(result))),
-      ),
+    return Column(
+      children: [
+        Expanded(
+            child: SingleChildScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                child: Center(
+                  child: images[index],
+                ))),
+        Card(
+            child: Column(
+          children: [
+            ListTile(
+              title: RichText(
+                text: TextSpan(
+                  text: result.input ?? "",
+                  style: const TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                textAlign: TextAlign.center,
+              ),
+              dense: false,
+              subtitle: Text(
+                result.title ?? "",
+                textAlign: TextAlign.center,
+              ),
+            ),
+            // Wrap(
+            //   children: getChips(result),
+            //   alignment: WrapAlignment.start,
+            // ),
+          ],
+        )),
+      ],
     );
+    // return CustomScrollView(
+    //   shrinkWrap: true,
+    //   slivers: [
+    //     SliverToBoxAdapter(
+    //       child: images[index],
+    //     ),
+    //     SliverFillRemaining(
+    //         hasScrollBody: false,
+    //         child: ListTile(
+    //             title: Text(
+    //               result.input ?? "",
+    //               textAlign: TextAlign.center,
+    //             ),
+    //             dense: true,
+    //             subtitle: Row(mainAxisSize: MainAxisSize.max, children: getChips(result))))
+    //   ],
+    // );
     // return Card(
     //   child: ListView(
     //     physics: const NeverScrollableScrollPhysics(),

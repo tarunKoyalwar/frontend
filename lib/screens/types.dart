@@ -29,7 +29,7 @@ class Result {
   String? headlessBody;
   String? screenshotBytes;
   Map<String, dynamic>? responseHeader;
-  List<String>? technologies;
+  List<dynamic>? technologies;
   // List<ByteData> asn;
   // List<ByteData> cspData;
   // List<ByteData> tlsData;
@@ -137,7 +137,7 @@ class Result {
       headlessBody: json['headless_body'],
       screenshotBytes: json['screenshot_bytes'],
       responseHeader: json['response_header'],
-      technologies: json['technologies'],
+      technologies: json['tech'],
       // asn: json['asn'],
       // cspData: json['csp_data'],
       // tlsData: json['tls_data'],
